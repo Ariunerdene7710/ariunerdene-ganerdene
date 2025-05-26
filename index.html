@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Төрийн Банк</title>
+  <script src="https://kit.fontawesome.com/87d83f90d2.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="text-2xl font-bold"></h1>
+      <nav class="hidden md:flex space-x-6 text-sm">
+        <a href="#" class="hover:underline">Хөрөнгө оруулагчид</a>
+        <a href="#" class="hover:underline">Тогтвортой хөгжил</a>
+        <a href="#" class="hover:underline">Санхүүгийн боловсрол</a>
+        <a href="#" class="hover:underline">Бидний тухай</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Sub Nav -->
+  <section class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center space-x-6 text-sm">
+    <div class="flex"><img class="h-10 w-auto" src="img/image.png" alt="ТӨРИЙН БАНК" />
+    <a href="#" class="flex items-center bg-yellow-500 text-black rounded-xl px-3 py-2 hover:underline"   >Иргэн </a>
+    <a href="#" class="flex items-center bg-white-500 text-black rounded-xl px-3 py-2 hover:underline">Байгуулга</a></div>
+    
+
+    <div class="flex items-center space-x-8">
+  <a href="#" class="hover:underline">Утас: 1800-1881</a> 
+  <a href="#" class="hover:underline">ATM Салбарууд</a>
+  <i class="fa-solid fa-magnifying-glass cursor-pointer"></i>
+  <img src="img/Төрийн банк _ State bank_files/en_flag.png" alt="">
+</div>
+
+    
+    
+
+  </section>
+
+  <!-- Main Navigation -->
+  <nav class="bg-blue-900 text-white">
+    <div class="max-w-7xl mx-auto px-5 py-5 flex flex-wrap gap-3 items-center justify-between text-sm">
+      <a href="#" class="hover:underline">Харилцах данс, Хадгаламж</a>
+      <a href="#" class="hover:underline">Зээл</a>
+      <a href="#" class="hover:underline">Карт</a>
+      <a href="#" class="hover:underline">Цахим банк</a>
+      <a href="#" class="hover:underline">Даатгал</a>
+      <a href="#" class="hover:underline">Бусад үйлчилгээ</a>
+      <a href="#" class="flex items-center bg-yellow-500 text-black rounded-xl px-3 py-2 hover:underline">
+        <img src="img/global.png" class="h-5 w-auto mr-2" alt="">Гялс банк
+      </a>
+      <a href="#" class="flex items-center bg-white text-black rounded-xl px-3 py-2 hover:underline">
+        <img src="img/globe.png" class="h-5 w-auto mr-2" alt="">И-Биллинг
+      </a>
+    </div>
+  </nav>
+
+  <!-- Carousel -->
+  <section class="pb-10">
+    <div class="relative w-full h-96 rounded-xl overflow-hidden max-w-7xl mx-auto">
+      <div id="carousel-bg" class="absolute inset-0 bg-cover bg-center transition-all duration-700">
+        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+      </div>
+      <div class="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4">
+        <h2 id="carousel-title" class="text-3xl md:text-4xl font-bold mb-4">Төрийн банкны эхлэл</h2>
+        <p id="carousel-desc" class="text-lg md:text-xl max-w-2xl">Монгол Улсын хөгжилд хувь нэмэр оруулж буй банк.</p>
+      </div>
+      <button onclick="prevImage()" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 text-black rounded-full p-3 shadow text-2xl z-20">←</button>
+      <button onclick="nextImage()" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 text-black rounded-full p-3 shadow text-2xl z-20">→</button>
+    </div>
+  </section>
+
+  <!-- JavaScript for Carousel -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const slides = [
+        { src: "img/8.jpeg", title: "ЖОЛООЧИЙН ХАРИУЦЛАГЫН АЛБАН ЖУРМЫН ДААТГАЛ", desc: "Монгол Улсын хөгжилд хувь нэмэр оруулж буй банк." },
+        { src: "img/banner-Eruul-irgen-bagts-buteegdehuun1.jpeg", title: "ЭРҮҮЛ ИРГЭН БАГЦ БҮТЭЭГДЭХҮҮН", desc: "Эрүүл иргэн хадгаламж,Эрүүл иргэн виза карт" },
+        { src: "img/banner-Gyalsbank--Tsahim-zeel.jpeg", title: "Цахим зээл", desc: "" },
+        { src: "img/Төрийн банк _ State bank_files/banner-WU-banner.jpeg", title: "Мөнгөн гуйвуулгын үйлчилгээ", desc: "" }
+      
+      ];
+      let current = 0;
+      const bgEl = document.getElementById("carousel-bg");
+      const titleEl = document.getElementById("carousel-title");
+      const descEl = document.getElementById("carousel-desc");
+
+      function showImage(index) {
+        bgEl.style.backgroundImage = `url('${slides[index].src}')`;
+        titleEl.textContent = slides[index].title;
+        descEl.textContent = slides[index].desc;
+      }
+
+      function nextImage() {
+        current = (current + 1) % slides.length;
+        showImage(current);
+      }
+
+      function prevImage() {
+        current = (current - 1 + slides.length) % slides.length;
+        showImage(current);
+      }
+
+      showImage(current);
+      setInterval(nextImage, 4000);
+    });
+  </script>
+
+  <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-4">
+  
+    <div class="bg-white shadow p-5 rounded-xl flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <div class="bg-yellow-600 text-white rounded-full p-3">
+          <i class="fa-solid fa-wallet text-xl"></i>
+        </div>
+        <p class="text-lg font-semibold">Харилцах данс</p>
+      </div>
+     <img class="h-7 w-7" src="img/right.png" alt="">
+    </div>
+
+    <div class="bg-white shadow p-5 rounded-xl flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <div class="bg-yellow-600 rounded-full p-3">
+          <img src="img/Төрийн банк _ State bank_files/globe.png" alt="" class="h-6 w-6">
+        </div>
+        <p class="text-lg font-semibold">Цахим банк</p>
+      </div>
+      <img class="h-7 w-7" src="img/right.png" alt="">
+    </div>
+
+    <div class="bg-white shadow p-5 rounded-xl flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <div class="bg-yellow-600 text-white rounded-full p-3">
+          <img src="img/Төрийн банк _ State bank_files/moneystack.png" alt="">
+          
+        </div>
+        <p class="text-lg font-semibold">Хадгаламжийн үйлчилгээ</p>
+      </div>
+      
+      <img class="h-7 w-7" src="img/right.png" alt="">
+    </div>
+
+    <div class="bg-white shadow p-5 rounded-xl flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <div class="bg-yellow-600 text-white rounded-full p-3">
+          <span class="text-lg font-bold"><img src="img/Төрийн банк _ State bank_files/internet.png" alt=""></span>
+        </div>
+        <p class="text-lg font-semibold">Онлайн үйлчилгээ</p>
+      </div>
+     <img class="h-7 w-7" src="img/right.png" alt="">
+    </div>
+
+    <div class="bg-white shadow p-5 rounded-xl flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <div class="bg-yellow-600 text-white rounded-full p-3">
+         <img src="img/Төрийн банк _ State bank_files/hand.png" alt="">
+        </div>
+        <p class="text-lg font-semibold">Зээлийн үйлчилгээ</p>
+      </div>
+      <img class="h-7 w-7" src="img/right.png" alt="">
+    </div>
+
+    <div class="bg-white shadow p-5 rounded-xl flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <div class="bg-yellow-600 text-white rounded-full p-3">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 6a2 2 0 110-4 2 2 0 010 4zm0 2a2 2 0 110 4 2 2 0 010-4zm0 6a2 2 0 110 4 2 2 0 010-4z" />
+          </svg>
+        </div>
+        <p class="text-lg font-semibold">Бусад үйлчилгээ</p>
+      </div>
+      <img class="h-7 w-7" src="img/right.png" alt="">
+    </div>
+  </section>
+
+ 
+  <section class="max-w-7xl mx-auto px-4 py-10">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-2xl font-bold">Мэдээ мэдээлэл</h2>
+      <a href="#" class="text-blue-800 font-medium hover:underline">Бүгд →</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <div class="bg-white rounded-xl shadow overflow-hidden hover:shadow-lg transition">
+        <img src="/img/Төрийн банк _ State bank_files/Gyals20tseverlegee.png" alt="Мод тарих аян" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="font-semibold text-lg mb-2">Байгальд ээлтэй “Гялс цэвэрлэгээ” аян 8 дахь жилдээ</h3>
+          <p class="text-yellow-600 text-sm">2025-05-21</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow overflow-hidden hover:shadow-lg transition">
+        <img src="img/Төрийн банк _ State bank_files/Mastercard.jpeg" alt="POS Mastercard" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="font-semibold text-lg mb-2">Олон улсын Мастеркартыг ПОС төхөөрөмж дээр уншуулах боломжтой боллоо</h3>
+          <p class="text-yellow-600 text-sm">2025-05-09</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow overflow-hidden hover:shadow-lg transition">
+        <img src="img/Төрийн банк _ State bank_files/мод оо а.jpeg" alt="Гялс цэвэрлэгээ" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="font-semibold text-lg mb-2">Төрийн банк: Модыг мод(а) болгоё</h3>
+          <p class="text-yellow-600 text-sm">2025-05-15</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="grid grid-cols-3 gap-4 p-6 bg-white">
+  <!-- Зүүн талын үйлчилгээний жагсаалт -->
+  <div class="col-span-2 grid grid-cols-2 gap-4">
+    <div class="flex items-center justify-between p-4 bg-gray-100 rounded-xl">
+      <div class="flex items-center gap-2">
+        <div class="bg-yellow-500 rounded-full p-2 text-white">
+          💳
+        </div>
+        <div class="text-lg font-semibold">Аюулгүй байдал</div>
+      </div>
+      <img class="h-7 w-7" src="img/right.png" alt="">
+    </div>
+
+   <div class="flex items-center justify-between p-4 bg-yellow-50 rounded-xl border">
+      <div class="flex items-center gap-2">
+        <div class="bg-yellow-500 rounded-full p-2 text-white">
+          💰
+        </div>
+        <div class="text-lg font-semibold">Тендер</div>
+      </div>
+      <img class="h-7 w-7" src="img/right.png" alt="">
+    </div>
+
+    <div class="flex items-center justify-between p-4 bg-gray-100 rounded-xl">
+      <div class="flex items-center gap-2">
+        <div class="bg-yellow-500 rounded-full p-2 text-white">🌐</div>
+        <div class="text-lg font-semibold">Шилэн данс</div>
+      </div>
+      <img class="h-7 w-7" src="img/right.png" alt="">
+    </div>
+
+    
+<div class="flex items-center justify-between p-4 bg-gray-100 rounded-xl">
+      <div class="flex items-center gap-2">
+        <div class="bg-yellow-500 rounded-full p-2 text-white">🌐</div>
+        <div class="text-lg font-semibold">Комплайанс</div>
+      </div>
+      <img class="h-7 w-7" src="img/right.png" alt="">
+    </div>
+
+    <div class="flex items-center justify-between p-4 bg-gray-100 rounded-xl">
+      <div class="flex items-center gap-2">
+        <div class="bg-yellow-500 rounded-full p-2 text-white">🌐</div>
+        <div class="text-lg font-semibold">Авилгын эсрэг</div>
+      </div>
+      <img class="h-7 w-7" src="img/right.png" alt="">
+    </div>
+
+     <div class="flex items-center justify-between p-4 bg-gray-100 rounded-xl">
+      <div class="flex items-center gap-2">
+        <div class="bg-yellow-500 rounded-full p-2 text-white">🌐</div>
+        <div class="text-lg font-semibold">MONGWBL</div>
+      </div>
+      <img class="h-7 w-7" src="img/right.png" alt="">
+    </div>
+  </div>
+  <!-- Баруун талын ханшийн мэдээлэл -->
+  <div class="bg-gray-100 p-4 rounded-xl">
+    <h2 class="text-lg font-semibold mb-4">Ханшийн мэдээ</h2>
+    <div class="space-y-3">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <img src="img/Төрийн банк _ State bank_files/USD.svg">
+           <span>USD </span>
+        </div>
+        <div>3573.73</div>
+        <div>3573.73</div>
+      </div>
+      <div class="flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <img src="img/Төрийн банк _ State bank_files/EUR.svg">
+          <span>EUR</span>
+        </div>
+        <div>4046.71</div>
+        <div>4046.71</div>
+      </div>
+      <div class="flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <img src="img/Төрийн банк _ State bank_files/CNY.svg">
+          <span>CNY</span>
+        </div>
+        <div>495.95</div>
+        <div>495.95</div>
+      </div>
+      <div class="flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <img src="img/Төрийн банк _ State bank_files/JPY.svg">
+           <span>JPY</span>
+        </div>
+        <div>24.83</div>
+        <div>24.83</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="fixed top-0 right-0 h-full w-16 bg-white border-l border-gray-200 flex flex-col items-center py-4 space-y-6 shadow-sm rounded-l-3xl">
+  <!-- Dashboard icon -->
+  <button class="text-blue-900 hover:text-blue-600">
+    <img src="img/Төрийн банк _ State bank_files/calculator.png" class="h-5 w-5" fill="none" viewBox="" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="" />
+    </svg>
+  </button>
+
+  <!-- Chart icon -->
+  <button class="text-blue-900 hover:text-blue-600">
+    <img src="img/Төрийн банк _ State bank_files/graph.png" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 11V3h2v8h-2zm4 4v-4h2v4h-2zm-8 4v-8h2v8H7z" />
+    </img>
+  </button>
+
+  <!-- Hand/money icon -->
+  <button class="text-blue-900 hover:text-blue-600">
+    <img src="img/Төрийн банк _ State bank_files/loan.png" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+    </img>
+  </button>
+
+  <!-- User icon -->
+  <button class="text-blue-900 hover:text-blue-600">
+    <img src="img/Төрийн банк _ State bank_files/user.png" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A7.962 7.962 0 0112 15c2.21 0 4.21.896 5.879 2.336M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  </button>
+
+  <!-- Location icon -->
+  <button class="text-blue-900 hover:text-blue-600">
+    <img src="img/Төрийн банк _ State bank_files/map_pin.png" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.656 0 3-1.343 3-3S13.656 5 12 5s-3 1.343-3 3 1.344 3 3 3zm0 0c-4 0-8 2-8 6v1h16v-1c0-4-4-6-8-6z" />
+    </svg>
+  </button>
+  <!-- Wallet icon -->
+  <button class="text-blue-900 hover:text-blue-600">
+    <i class="fa-solid fa-wallet"></i> 
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d=/>
+    </svg>
+  </button>
+
+</div>
+<section class="max-w-6xl mx-auto px-4 py-8">
+  <h2 class="text-2xl font-semibold text-blue-900 mb-2">Онцлох үйлчилгээ</h2>
+  <div class="h-1 w-24 bg-yellow-400 mb-6"></div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Card 1 -->
+    <div class="bg-white rounded-2xl overflow-hidden shadow border border-yellow-200">
+      <img src="img/Төрийн банк _ State bank_files/IWxtzcJwLLmElo9BR3EU.jpeg" alt="Гялсбанк" class="w-full h-48 object-cover rounded-t-2xl">
+      <div class="p-4">
+        <p class="text-blue-900 font-semibold mb-2 leading-snug">
+          ТӨРИЙН БАНКНЫ ГЯЛСБАНК<br />
+          ШИНЭЧЛЭГДЭН ГЯЛСБАНК 3.0 ХУВИЛБАР<br />
+          НЭВТРЭЛЭЭ
+        </p>
+        <p class="text-yellow-500 font-medium mt-2">2023-11-23</p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="bg-white rounded-2xl overflow-hidden shadow border border-gray-100">
+      <img src="img/banner-Eruul-irgen-bagts-buteegdehuun1.jpeg" alt="Эрүүл иргэн багц" class="w-full h-48 object-cover rounded-t-2xl">
+      <div class="p-4">
+        <p class="text-blue-900 font-semibold mb-2 leading-snug">
+          “ЭРҮҮЛ ИРГЭН” БАГЦ БҮТЭЭГДЭХҮҮНИЙГ<br />
+          ТАНИЛЦУУЛЛАА
+        </p>
+        <p class="text-yellow-500 font-medium mt-2">2025-01-30</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-[#0a2b5a] text-white py-10">
+  <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+    
+    <!-- Logo and Social Links -->
+    <div>
+      <img src="img/Төрийн банк _ State bank_files/logo_mn_footer.png" alt="Төрийн Банк" class="mb-4 w-36" />
+      <p class="text-sm mb-4">Copyright © 2024 State Bank All rights reserve</p>
+      <div class="flex space-x-4 text-xl">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="mt-6">
+        <p class="font-semibold mb-2">Гялсбанк татах</p>
+        <img src="img/Төрийн банк _ State bank_files/qr.9eeabb62.svg" alt="QR Code" class="w-32 h-32 mb-4" />
+        <div class="flex space-x-4">
+          <img src="img/Төрийн банк _ State bank_files/appstore.png" alt="App Store" class="h-8" />
+          <img src="img/Төрийн банк _ State bank_files/playstore.png" alt="Google Play" class="h-8" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Useful Links -->
+    <div>
+      <h3 class="font-semibold text-lg mb-4">Хэрэгтэй холбоос</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:underline">Картаа алдсан, гээсэн</a></li>
+        <li><a href="#" class="hover:underline">Картын пин кодоо мартсан</a></li>
+      </ul>
+    </div>
+
+    <!-- About the Bank -->
+    <div>
+      <h3 class="font-semibold text-lg mb-4">Банкны тухай</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:underline">Бидний тухай</a></li>
+        <li><a href="#" class="hover:underline">Аюулгүй байдал</a></li>
+        <li><a href="#" class="hover:underline">Ажлын байр</a></li>
+        <li><a href="#" class="hover:underline">Тендер</a></li>
+        <li><a href="#" class="hover:underline">Худалдан борлуулах хөрөнгө</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div>
+      <h3 class="font-semibold text-lg mb-4">Тусламж</h3>
+      <p class="mb-2">Харилцагчийн мэдээллийн төв</p>
+      <p class="mb-2">Хаяг байршил</p>
+      <p class="mb-2">Түгээмэл асуултууд</p>
+      <p>Имэйл: <a href="mailto:contact@statebank.mn" class="underline">contact@statebank.mn</a></p>
+    </div>
+  </div>
+
+
+
+    
+  <div class="text-center space-y-2">
+    <h3 class="font-semibold justify-center mb-4">Холбоо барих</h3>
+    <p class="mb-2">Хаяг:Чингэлтэй дүүрэг, 1-р хороо,Бага тойруу 7/1</p>
+    <p class="mb-2">Лавлах:1800-1881</p>
+    <p>Имэйл: <a href="mailto:contact@statebank.mn" class="underline">contact@statebank.mn</a></p>
+  </div>
+
+  <!-- Optional Help Chat Button -->
+  <div class="fixed bottom-4 right-4 bg-yellow-500 text-white rounded-full px-4 py-3 shadow-lg flex items-center space-x-2">
+    <span>Сайн байна уу? Танд юугаар туслах вэ?</span>
+  </div>
+</footer>
+
+
+
+ 
+
+</body>
+</html>
